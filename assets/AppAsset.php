@@ -21,8 +21,17 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'plugins/fontawesome-free/css/all.min.css',
+        'plugins/overlayScrollbars/css/OverlayScrollbars.min.css',
+        'dist/css/adminlte.min.css',
     ];
     public $js = [
+        'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js',
+        'dist/js/adminlte.js',
+        'plugins/jquery-mousewheel/jquery.mousewheel.js',
+        'plugins/jquery-mapael/jquery.mapael.min.js',
+        'plugins/jquery-mapael/maps/usa_states.min.js',
+        'plugins/chart.js/Chart.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
