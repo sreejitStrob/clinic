@@ -1,5 +1,7 @@
 <?php
+
 use yii\web\Request;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $functions = require __DIR__ . '/functions.php';
@@ -16,11 +18,15 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'KjvHuqUpaZI3HB9H1XACVOmY38125UcO',
+            'cookieValidationKey' => 'xEMp4UQZM9mip4lOOhndG-6ywtDK6JYl',
+            'baseUrl' => $baseUrl,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
+//        'cache' => [
+//            'class' => 'yii\caching\FileCache',
+//        ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
@@ -30,10 +36,21 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'no-reply@thestaxapp.com',
+                'password' => 'rixysbwpahqayezm',
+                'port' => '587',
+                'encryption' => 'tls',
+                /*'streamOptions' => [
+                    'ssl' => [
+                        'allow_self_signed' => true,
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                    ],
+                ],*/
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -45,26 +62,38 @@ $config = [
             ],
         ],
         'db' => $db,
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-
+        'auth' => [
+            'class' => 'app\components\Auth',
+        ],
+        'formatter' => [
+            'currencyCode' => 'KWD',
+        ],
     ],
     'params' => $params,
+    'modules' => [
+        'api' => [
+            'class' => 'app\modules\api\Module',
+        ],
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+        ]
+    ],
 ];
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
-    ];
+    //$config['bootstrap'][] = 'debug';
+    //$config['modules']['debug'] = [
+    //    'class' => 'yii\debug\Module',
+    // uncomment the following to add your IP if you are not connecting from localhost.
+    //'allowedIPs' => ['127.0.0.1', '::1'],
+    //];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
