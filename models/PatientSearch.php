@@ -46,6 +46,7 @@ class PatientSearch extends Patient
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['patient_id' => SORT_DESC]],
         ]);
 
         $this->load($params);

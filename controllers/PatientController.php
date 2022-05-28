@@ -71,7 +71,7 @@ class PatientController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'patient_id' => $model->patient_id]);
+                return $this->redirect('index');
             }
         } else {
             $model->loadDefaultValues();
@@ -94,7 +94,7 @@ class PatientController extends Controller
         $model = $this->findModel($patient_id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'patient_id' => $model->patient_id]);
+            return $this->redirect('index');
         }
 
         return $this->render('update', [

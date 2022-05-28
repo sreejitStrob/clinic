@@ -12,24 +12,34 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+        <div class="row">
+            <div class="col-md-6">
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
+            </div>
+            <div class="col-md-6">
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
-
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-6">
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'gender')->dropDownList([ 'M' => 'Male', 'F' => 'Female'], ['prompt' => 'Select Gender']) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
     <?= $form->field($model, 'notes')->textarea(['rows' => 6]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'gender')->dropDownList([ 'M' => 'M', 'F' => 'F', '' => '', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
 
+    </div>
     <?php ActiveForm::end(); ?>
 
 </div>
