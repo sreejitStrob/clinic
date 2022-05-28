@@ -36,12 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'gender',
             //'created_at',
             //'updated_at',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Patient $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'patient_id' => $model->patient_id]);
-                 }
-            ],
+            ['class' => 'yii\grid\ActionColumn']
         ],
     ]); ?>
 
