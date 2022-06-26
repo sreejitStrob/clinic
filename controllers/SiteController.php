@@ -76,17 +76,28 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = false;
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        debugPrint(Yii::$app->request->post());
+        $incomingData = Yii::$app->request->post();
+        if (isset($incomingData['email']))
+            $model->username = $incomingData['email'];
+
+        if (isset($incomingData['pass']))
+            $model->password = $incomingData['pass'];
+
+        if ( $model->login()) {
+            debugPrint(Yii::$app->request->post());
+            exit;
             return $this->goBack();
         }
 
         $model->password = '';
-        return $this->render('login', [
+        return $this->render('doctor-login', [
             'model' => $model,
         ]);
     }

@@ -48,4 +48,9 @@ class Admin extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username]);
+    }
 }

@@ -135,7 +135,7 @@ AppAsset::register($this);
                         </a>
                     </li>
                     <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Patient
@@ -158,7 +158,7 @@ AppAsset::register($this);
                         </ul>
                     </li>
                     <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Medical Representative
@@ -167,13 +167,13 @@ AppAsset::register($this);
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= Url::to(['patient/create'])?>" class="nav-link">
+                                <a href="<?= Url::to(['medical-representative/create'])?>" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create MR</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= Url::to(['patient/index'])?>" class="nav-link">
+                                <a href="<?= Url::to(['medical-representative/index'])?>" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Manage MR</p>
                                 </a>

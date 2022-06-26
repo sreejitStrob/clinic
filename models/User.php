@@ -10,22 +10,26 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $authKey;
     public $accessToken;
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+//    private static $users = [
+//        '100' => [
+//            'id' => '100',
+//            'username' => 'admin',
+//            'password' => 'admin',
+//            'authKey' => 'test100key',
+//            'accessToken' => '100-token',
+//        ],
+//        '101' => [
+//            'id' => '101',
+//            'username' => 'demo',
+//            'password' => 'demo',
+//            'authKey' => 'test101key',
+//            'accessToken' => '101-token',
+//        ],
+//    ];
+    public static function tableName()
+    {
+        return '{{%admin}}';
+    }
 
 
     /**
@@ -58,13 +62,8 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
+        return static::findOne(['email' => $username]);
 
-        return null;
     }
 
     /**
@@ -72,7 +71,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public function getId()
     {
-        return $this->id;
+        return $this->getPrimaryKey();
     }
 
     /**
@@ -99,6 +98,11 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return Yii::$app->security->validatePassword($password, $this->password);
+    }
+
+    public function generateAuthKey()
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString();
     }
 }
