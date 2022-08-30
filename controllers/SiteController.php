@@ -83,15 +83,15 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         debugPrint(Yii::$app->request->post());
-        $incomingData = Yii::$app->request->post();
-        if (isset($incomingData['email']))
-            $model->username = $incomingData['email'];
+//        $incomingData = Yii::$app->request->post();
+//        if (isset($incomingData['email']))
+//            $model->username = $incomingData['email'];
+//
+//        if (isset($incomingData['pass']))
+//            $model->password = $incomingData['pass'];
 
-        if (isset($incomingData['pass']))
-            $model->password = $incomingData['pass'];
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-        if ( $model->login()) {
-            debugPrint(Yii::$app->request->post());
             exit;
             return $this->goBack();
         }

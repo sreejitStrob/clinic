@@ -13,7 +13,7 @@ use Yii;
  * @property string|null $create_at
  * @property string|null $updated_at
  */
-class Admin extends \yii\db\ActiveRecord
+class Admin  extends User
 {
     /**
      * {@inheritdoc}

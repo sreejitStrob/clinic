@@ -31,7 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'password',
             'create_at',
             'updated_at',
-            ['class' => 'yii\grid\ActionColumn']
+            [
+                'class' => 'yii\grid\ActionColumn',
+
+            ],
         ],
     ]); ?>
 
