@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Patient;
 use app\models\PatientSearch;
 use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -28,6 +29,17 @@ class PatientController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+                'access' => [
+                    'class' => AccessControl::className(),
+                    'only' => ['index','create','update','view'],
+                    'rules' => [
+                        [
+                            'actions' => [],
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
+                    ],
+                ],
             ]
         );
     }
@@ -39,11 +51,11 @@ class PatientController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user){
-            debugPrint(Yii::$app->user->identity);
-        }else{
-            debugPrint(Yii::$app->user->admin_id);
-        }
+//        if(Yii::$app->user){
+            debugPrint(Yii::$app->user->identity->admin_id);
+//        }else{
+//            debugPrint(Yii::$app->user->admin_id);
+//        }
 
         $searchModel = new PatientSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);

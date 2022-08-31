@@ -39,7 +39,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+//                    'logout' => ['post'],
                 ],
             ],
         ];
@@ -87,13 +87,14 @@ class SiteController extends Controller
         $this->layout = false;
         if (!Yii::$app->user->isGuest) {
             return  Yii::$app->getResponse()->redirect(['patient/index']);
-        } else{
-            debugPrint(Yii::$app->user);
-            exit;
         }
+//        else{
+//            debugPrint(Yii::$app->user);
+//            exit;
+//        }
 
         $model = new LoginForm();
-        debugPrint(Yii::$app->request->post());
+//        debugPrint(Yii::$app->request->post());
         $incomingData = Yii::$app->request->post();
 //        if (isset($incomingData['email']))
 //            $model->username = $incomingData['email'];
