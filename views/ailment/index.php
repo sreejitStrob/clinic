@@ -28,13 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'name',
             'description:ntext',
-            'is_deleted',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Ailment $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'ailment_id' => $model->ailment_id]);
-                }
-            ],
+            ['class' => 'yii\grid\ActionColumn']
         ],
     ]); ?>
 

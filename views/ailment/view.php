@@ -14,8 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="ailment-view">
 
     <p>
-        <?= Html::a('Update', ['update', 'ailment_id' => $model->ailment_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'ailment_id' => $model->ailment_id], [
+        <?= Html::a('Update', ['update', 'id' => $model->ailment_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->ailment_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,8 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'name',
-            'description:ntext',
-            'is_deleted',
+            'description:ntext'
         ],
     ]) ?>
 
