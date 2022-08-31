@@ -44,7 +44,7 @@ use yii\bootstrap4\Html;
 
                 <div class="wrap-input100 validate-input" data-validate="Password is required">
 <!--                    <input class="input100" type="password" name="pass">-->
-                    <?= $form->field($model, 'password', ['options' => ['class' => 'custom_class_div']])->textInput(['class' => 'input100'])->label(false) ?>
+                    <?= $form->field($model, 'password', ['options' => ['class' => 'custom_class_div']])->passwordInput(['class' => 'input100'])->label(false) ?>
                     <span class="focus-input100"></span>
                     <span class="label-input100">Password</span>
                 </div>
