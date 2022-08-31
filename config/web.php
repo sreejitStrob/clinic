@@ -39,8 +39,8 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
-                'username' => 'no-reply@thestaxapp.com',
-                'password' => 'rixysbwpahqayezm',
+                'username' => '',
+                'password' => '',
                 'port' => '587',
                 'encryption' => 'tls',
                 /*'streamOptions' => [
@@ -72,7 +72,7 @@ $config = [
             'class' => 'app\components\Auth',
         ],
         'formatter' => [
-            'currencyCode' => 'KWD',
+            'currencyCode' => '',
         ],
     ],
     'params' => $params,
