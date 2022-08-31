@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use Yii;
+use yii\base\Exception;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -12,6 +14,11 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    /**
+     * @var string
+     */
+    private $password_hash;
+
     /**
      * {@inheritdoc}
      */
@@ -73,26 +80,30 @@ class SiteController extends Controller
      * Login action.
      *
      * @return Response|string
+     * @throws Exception
      */
     public function actionLogin()
     {
         $this->layout = false;
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return  Yii::$app->getResponse()->redirect(['patient/index']);
+        } else{
+            debugPrint(Yii::$app->user);
+            exit;
         }
 
         $model = new LoginForm();
         debugPrint(Yii::$app->request->post());
-//        $incomingData = Yii::$app->request->post();
+        $incomingData = Yii::$app->request->post();
 //        if (isset($incomingData['email']))
 //            $model->username = $incomingData['email'];
 //
 //        if (isset($incomingData['pass']))
 //            $model->password = $incomingData['pass'];
 
+//    exit;
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            exit;
             return $this->goBack();
         }
 
