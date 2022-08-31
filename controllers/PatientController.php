@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Patient;
 use app\models\PatientSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -38,6 +39,12 @@ class PatientController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user){
+            debugPrint(Yii::$app->user->identity);
+        }else{
+            debugPrint(Yii::$app->user->admin_id);
+        }
+
         $searchModel = new PatientSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 

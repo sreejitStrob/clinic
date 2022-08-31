@@ -10,7 +10,8 @@ class User extends ActiveRecord implements IdentityInterface
 {
     public $id;
     public $username;
-    public $password;
+    public $admin_id;
+//    public $password;
     public $authKey;
     public $accessToken;
 
@@ -41,7 +42,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return static::findOne(['admin_id' => $id]);
     }
 
     /**
@@ -102,6 +103,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function validatePassword($password)
     {
+//        debugPrint($password);
+
         return Yii::$app->security->validatePassword($password, $this->password);
     }
 
