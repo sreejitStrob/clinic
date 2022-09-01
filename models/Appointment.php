@@ -50,13 +50,13 @@ class Appointment extends \yii\db\ActiveRecord
     {
         return [
             'appointment_id' => 'Appointment ID',
-            'patient_id' => 'Patient ID',
-            'ailment_id' => 'Ailment ID',
-            'patient_name' => 'Patient Name',
+            'patient_id' => 'Patient Name',
+            'ailment_id' => 'Ailment',
+            'patient_name' => 'Patient Short Name',
             'age' => 'Age',
             'amount' => 'Amount',
             'notes' => 'Notes',
-            'is_followup' => 'Is Followup',
+            'is_followup' => 'Is Followup ?',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

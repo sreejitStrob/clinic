@@ -14,8 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="appointment-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Create Appointment', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -28,16 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'appointment_id',
+//            'appointment_id',
             'patient_id',
             'ailment_id',
             'patient_name',
             'age',
-            //'amount',
-            //'notes:ntext',
-            //'is_followup',
-            //'created_at',
-            //'updated_at',
+            'amount',
+            'notes:ntext',
+//            'is_followup',
+            [
+                'attribute' => 'is_followup',
+                'value' => function ($model) {
+                    return (!empty($model->is_followup)) ? 'Yes' : 'No';
+                }
+            ],
+            'created_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Appointment $model, $key, $index, $column) {

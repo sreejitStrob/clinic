@@ -12,9 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="patient-view">
-
-
-
     <p>
         <?= Html::a('Update', ['update', 'patient_id' => $model->patient_id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'patient_id' => $model->patient_id], [
@@ -29,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'patient_id',
+//            'patient_id',
             'name',
             'phone',
             'email:email',
