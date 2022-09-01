@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\helpers\AppHelper;
 use app\models\Appointment;
 use app\models\AppointmentSearch;
 use yii\web\Controller;
@@ -38,6 +39,13 @@ class AppointmentController extends Controller
      */
     public function actionIndex()
     {
+//        $appHelperTest = AppHelper::$citizenshipList;
+//        debugPrint($appHelperTest);
+//        exit;
+        $patientList = AppHelper::class;
+        debugPrint($patientList);
+        exit;
+
         $searchModel = new AppointmentSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 

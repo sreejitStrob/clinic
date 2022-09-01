@@ -34,7 +34,7 @@ class Appointment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['patient_id', 'ailment_id', 'is_followup'], 'integer'],
+            [['patient_id', 'ailment_id', 'is_followup','consultant_type_id'], 'integer'],
             [['age', 'amount'], 'number'],
             [['notes'], 'string'],
             [['created_at', 'updated_at'], 'required'],
@@ -52,6 +52,7 @@ class Appointment extends \yii\db\ActiveRecord
             'appointment_id' => 'Appointment ID',
             'patient_id' => 'Patient Name',
             'ailment_id' => 'Ailment',
+            'consultant_type_id' => 'Consultation Type',
             'patient_name' => 'Patient Short Name',
             'age' => 'Age',
             'amount' => 'Amount',
