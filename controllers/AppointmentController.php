@@ -57,14 +57,14 @@ class AppointmentController extends Controller
 
     /**
      * Displays a single Appointment model.
-     * @param int $appointment_id Appointment ID
+     * @param int $id Appointment ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($appointment_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($appointment_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -77,9 +77,13 @@ class AppointmentController extends Controller
     {
         $model = new Appointment();
 
+        $patientList = AppHelper::getPatientList();
+        $consultationType = AppHelper::getConsultationType();
+        $ailmentList = AppHelper::getAilmentList();
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'appointment_id' => $model->appointment_id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -93,16 +97,16 @@ class AppointmentController extends Controller
     /**
      * Updates an existing Appointment model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $appointment_id Appointment ID
+     * @param int $id Appointment ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($appointment_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($appointment_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'appointment_id' => $model->appointment_id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -127,13 +131,13 @@ class AppointmentController extends Controller
     /**
      * Finds the Appointment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $appointment_id Appointment ID
+     * @param int $id Appointment ID
      * @return Appointment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($appointment_id)
+    protected function findModel($id)
     {
-        if (($model = Appointment::findOne(['appointment_id' => $appointment_id])) !== null) {
+        if (($model = Appointment::findOne(['appointment_id' => $id])) !== null) {
             return $model;
         }
 
