@@ -77,9 +77,9 @@ class AppointmentController extends Controller
     {
         $model = new Appointment();
 
-        $patientList = AppHelper::getPatientList();
-        $consultationType = AppHelper::getConsultationType();
-        $ailmentList = AppHelper::getAilmentList();
+//        $patientList = AppHelper::getPatientList();
+//        $consultationType = AppHelper::getConsultationType();
+//        $ailmentList = AppHelper::getAilmentList();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {

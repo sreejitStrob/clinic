@@ -1,5 +1,7 @@
 <?php
 
+use app\helpers\AppHelper;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,6 +16,15 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'patient_id')->textInput() ?>
+            <?=
+             $form->field($model, 'patient_id')->widget(Select2::classname(), [
+                'data' => AppHelper::getPatientList(),
+                'options' => ['placeholder' => 'Select a patient ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
         </div>
         <div class="col-md-3">
             <?= $form->field($model, 'consultant_type_id')->textInput() ?>
