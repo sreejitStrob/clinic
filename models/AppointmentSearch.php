@@ -11,14 +11,17 @@ use app\models\Appointment;
  */
 class AppointmentSearch extends Appointment
 {
+    public $isFollowup = "";
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
+
+
         return [
-            [['appointment_id', 'patient_id', 'ailment_id', 'is_followup'], 'integer'],
-            [['patient_name', 'notes', 'created_at', 'updated_at'], 'safe'],
+            [['appointment_id', 'patient_id', 'ailment_id'], 'integer'],
+            [['patient_name', 'notes', 'created_at', 'updated_at','is_followup','isFollowup'], 'safe'],
             [['age', 'amount'], 'number'],
         ];
     }
@@ -45,20 +48,27 @@ class AppointmentSearch extends Appointment
 //        exit;
         $query = Appointment::find();
 
+        if (isset($params['AppointmentSearch']['isFollowup']) && $params['AppointmentSearch']['isFollowup'] == 'Y') {
+            $query->andWhere([
+                'is_followup' => 1
+            ]);
+        } elseif (isset($params['AppointmentSearch']['isFollowup']) && $params['AppointmentSearch']['isFollowup'] == 'N'){
+            $query->andWhere([
+                'is_followup' => 0
+            ]);
+        }
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder' => ['appointment_id' => SORT_DESC]],
         ]);
 
         $this->load($params);
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
 
+//    debugPrint($this->is_followup);
+//        exit;
         // grid filtering conditions
         $query->andFilterWhere([
             'appointment_id' => $this->appointment_id,
@@ -66,7 +76,6 @@ class AppointmentSearch extends Appointment
             'ailment_id' => $this->ailment_id,
             'age' => $this->age,
             'amount' => $this->amount,
-            'is_followup' => $this->is_followup,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

@@ -42,6 +42,8 @@ class AppointmentController extends Controller
         $searchModel = new AppointmentSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
+//        debugPrint($this->request->queryParams);
+//        exit;
 
         return $this->render('index', [
             'searchModel' => $searchModel,

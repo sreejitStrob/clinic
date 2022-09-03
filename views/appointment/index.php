@@ -72,11 +72,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'amount',
             'notes:ntext',
             [
-                'attribute' => 'is_followup',
+                'label' => 'Is followup ?',
                 'value' => function ($model) {
                     return (!empty($model->is_followup)) ? 'Yes' : 'No';
                 },
-                'filter' => Html::activeDropDownList($searchModel, 'is_followup', [1 => 'Yes', 0 => 'No'], ['class' => 'form-control', 'prompt' => 'Filer By Status']),
+                'filter' => Html::activeDropDownList($searchModel, 'isFollowup', ["Y" => "Yes", "N" => "No"], ['class' => 'form-control', 'prompt' => 'Filer By Status']),
             ],
             'created_at',
             ['class' => 'yii\grid\ActionColumn']

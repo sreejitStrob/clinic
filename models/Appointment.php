@@ -34,11 +34,11 @@ class Appointment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['patient_id', 'ailment_id', 'is_followup','consultant_type_id'], 'integer'],
+            [['patient_id', 'ailment_id','consultant_type_id'], 'integer'],
             [['age', 'amount'], 'number'],
             [['notes'], 'string'],
 //            [['created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at','is_followup'], 'safe'],
             [['patient_name'], 'string', 'max' => 255],
         ];
     }
