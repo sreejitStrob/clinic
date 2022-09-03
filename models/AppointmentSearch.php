@@ -44,8 +44,6 @@ class AppointmentSearch extends Appointment
      */
     public function search($params)
     {
-//        debugPrint($params);
-//        exit;
         $query = Appointment::find();
 
         if (isset($params['AppointmentSearch']['isFollowup']) && $params['AppointmentSearch']['isFollowup'] == 'Y') {
@@ -66,8 +64,6 @@ class AppointmentSearch extends Appointment
 
         $this->load($params);
 
-
-//    debugPrint($this->is_followup);
 //        exit;
         // grid filtering conditions
         $query->andFilterWhere([
