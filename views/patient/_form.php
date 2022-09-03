@@ -29,6 +29,11 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
     <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'age')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
     <?= $form->field($model, 'notes')->textarea(['rows' => 6]) ?>
         </div>

@@ -3,6 +3,7 @@ namespace app\helpers;
 
 use app\models\Ailment;
 use app\models\ConsultantType;
+use app\models\ConsultationType;
 use app\models\Patient;
 use yii\helpers\ArrayHelper;
 
@@ -16,7 +17,7 @@ class AppHelper {
     }
 
     public static function getConsultationType () {
-        $consultationType = ConsultantType::find()->where([
+        $consultationType = ConsultationType::find()->where([
             'is_deleted' => 0
         ])->all();
         return ArrayHelper::map($consultationType, 'consultant_type_id', 'name');
