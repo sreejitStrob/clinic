@@ -41,6 +41,8 @@ class AppointmentSearch extends Appointment
      */
     public function search($params)
     {
+//        debugPrint($params);
+//        exit;
         $query = Appointment::find();
 
         // add conditions that should always apply here

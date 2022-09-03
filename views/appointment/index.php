@@ -13,6 +13,9 @@ use yii\grid\GridView;
 
 $this->title = 'Appointments';
 $this->params['breadcrumbs'][] = $this->title;
+//debugPrint(AppHelper::getAilmentList());
+//debugPrint(['1' => 'Yes', '01' => 'No']);
+//exit;
 ?>
 <div class="appointment-index">
 
@@ -33,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'label' => 'Patient',
-                'contentOptions' => [ 'style' => 'width: 25%;' ],
+                'contentOptions' => [ 'style' => 'width: 20%;' ],
                 'value' => function ($model) {
 
                     return isset($model->patient->name) ? $model->patient->name : "";
@@ -48,23 +51,32 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ])
             ],
-            'ailment_id',
             [
                 'label' => 'Ailment',
-                   'value' => function ($model) {
-                       return isset($model->patient->name) ? $model->patient->name : "";
-                   }
+                'contentOptions' => [ 'style' => 'width: 20%;'],
+                'value' => function ($model) {
+                    return isset($model->ailment->name) ? $model->ailment->name : "";
+                },
+                'filter' => Select2::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'ailment_id',
+                    'data' => AppHelper::getAilmentList(),
+                    'options' => ['placeholder' => 'Select A Ailment ...'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ])
             ],
             'patient_name',
             'age',
             'amount',
             'notes:ntext',
-//            'is_followup',
             [
                 'attribute' => 'is_followup',
                 'value' => function ($model) {
                     return (!empty($model->is_followup)) ? 'Yes' : 'No';
-                }
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'is_followup', [1 => 'Yes', 0 => 'No'], ['class' => 'form-control', 'prompt' => 'Filer By Status']),
             ],
             'created_at',
             ['class' => 'yii\grid\ActionColumn']
