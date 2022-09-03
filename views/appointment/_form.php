@@ -2,9 +2,10 @@
 
 use app\helpers\AppHelper;
 use kartik\select2\Select2;
+use yii\helpers\BaseUrl;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+$this->registerJsFile(BaseUrl::home() . 'js/appointment.js?micro=12', ['depends' => [\yii\web\JqueryAsset::className()]]);
 /* @var $this yii\web\View */
 /* @var $model app\models\Appointment */
 /* @var $form yii\widgets\ActiveForm */
@@ -15,11 +16,25 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'patient_id')->textInput() ?>
             <?=
-             $form->field($model, 'patient_id')->widget(Select2::classname(), [
+            $form->field($model, 'patient_id')->widget(Select2::classname(), [
                 'data' => AppHelper::getPatientList(),
                 'options' => ['placeholder' => 'Select a patient ...'],
+
+                'pluginOptions' => [
+                    'allowClear' => true,
+                ],
+                'pluginEvents' => [
+                    "select2:select" => "function() { appointment.patientSelect(this.value) }",
+                ]
+            ]);
+            ?>
+        </div>
+        <div class="col-md-3">
+            <?=
+            $form->field($model, 'consultant_type_id')->widget(Select2::classname(), [
+                'data' => AppHelper::getConsultationType(),
+                'options' => ['placeholder' => 'Select a Consultation Type ...'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],
@@ -27,10 +42,16 @@ use yii\widgets\ActiveForm;
             ?>
         </div>
         <div class="col-md-3">
-            <?= $form->field($model, 'consultant_type_id')->textInput() ?>
-        </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'ailment_id')->textInput() ?>
+
+            <?=
+            $form->field($model, 'ailment_id')->widget(Select2::classname(), [
+                'data' => AppHelper::getAilmentList(),
+                'options' => ['placeholder' => 'Select a Ailment ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
         </div>
     </div>
     <div class="row">

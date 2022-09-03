@@ -39,12 +39,7 @@ class AppointmentController extends Controller
      */
     public function actionIndex()
     {
-//        $appHelperTest = AppHelper::$citizenshipList;
-//        debugPrint($appHelperTest);
-//        exit;
-        $patientList = AppHelper::class;
-        debugPrint($patientList);
-        exit;
+
 
         $searchModel = new AppointmentSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);

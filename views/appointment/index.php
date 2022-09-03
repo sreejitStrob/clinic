@@ -1,5 +1,7 @@
 <?php
 
+use app\helpers\AppHelper;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -23,12 +25,36 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options' => [ 'style' => 'table-layout:fixed;' ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'appointment_id',
-            'patient_id',
+
+            [
+                'label' => 'Patient',
+                'contentOptions' => [ 'style' => 'width: 25%;' ],
+                'value' => function ($model) {
+
+                    return isset($model->patient->name) ? $model->patient->name : "";
+                },
+                'filter' => Select2::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'patient_id',
+                    'data' => AppHelper::getPatientList(),
+                    'options' => ['placeholder' => 'Select A Patient ...'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ])
+            ],
             'ailment_id',
+            [
+                'label' => 'Ailment',
+                   'value' => function ($model) {
+                       return isset($model->patient->name) ? $model->patient->name : "";
+                   }
+            ],
             'patient_name',
             'age',
             'amount',
@@ -41,12 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             'created_at',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Appointment $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'appointment_id' => $model->appointment_id]);
-                 }
-            ],
+            ['class' => 'yii\grid\ActionColumn']
         ],
     ]); ?>
 

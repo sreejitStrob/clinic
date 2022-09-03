@@ -37,7 +37,7 @@ class Appointment extends \yii\db\ActiveRecord
             [['patient_id', 'ailment_id', 'is_followup','consultant_type_id'], 'integer'],
             [['age', 'amount'], 'number'],
             [['notes'], 'string'],
-            [['created_at', 'updated_at'], 'required'],
+//            [['created_at', 'updated_at'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['patient_name'], 'string', 'max' => 255],
         ];
@@ -61,5 +61,9 @@ class Appointment extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function getPatient() {
+        return $this->hasOne(Patient::className(), ['patient_id' => 'patient_id']);
     }
 }
