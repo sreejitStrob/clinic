@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\helpers\AppHelper;
 use app\models\Appointment;
 use app\models\AppointmentSearch;
+use app\models\ConsultationType;
 use app\models\Patient;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -142,6 +143,28 @@ class AppointmentController extends Controller
             $response = [
                 'status' => 405,
                 'data' => $patientModel
+            ];
+        }
+        return json_encode($response,true);
+    }
+
+    public function actionConsultationDetails ($id) {
+
+        $consultationModel = ConsultationType::find()
+            ->where([
+                'consultant_type_id' => $id
+            ])
+            ->asArray()
+            ->one();
+        if (!empty($consultationModel)) {
+            $response = [
+                'status' => 200,
+                'data' => $consultationModel
+            ];
+        } else{
+            $response = [
+                'status' => 405,
+                'data' => $consultationModel
             ];
         }
         return json_encode($response,true);
