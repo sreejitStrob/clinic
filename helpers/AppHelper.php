@@ -9,7 +9,8 @@ use yii\helpers\ArrayHelper;
 
 class AppHelper {
 
-    public static $citizenshipList = ['KU' => 'Kuwait', 'EX' => 'Expat'];
+
+    public static $gender = ['M' => 'Male', 'F' => 'Female','O' => 'Other'];
 
     public static function getPatientList () {
         $patientModel = Patient::find()->all();
