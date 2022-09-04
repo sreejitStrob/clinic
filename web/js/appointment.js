@@ -36,7 +36,7 @@ var appointment = {
             {
                 let data = JSON.parse(response);
                 if (data.status == 200) {
-                    // let amount = data.data.appointment-amount;
+                     let amount = data.data.amount;
                     $("#appointment-amount").val(amount);
                 }
             },

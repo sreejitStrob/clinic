@@ -5,7 +5,7 @@ use kartik\select2\Select2;
 use yii\helpers\BaseUrl;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-$this->registerJsFile(BaseUrl::home() . 'js/appointment.js?micro=15', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile(BaseUrl::home() . 'js/appointment.js?micro=17', ['depends' => [\yii\web\JqueryAsset::className()]]);
 /* @var $this yii\web\View */
 /* @var $model app\models\Appointment */
 /* @var $form yii\widgets\ActiveForm */
