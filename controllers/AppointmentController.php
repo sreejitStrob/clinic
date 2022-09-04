@@ -71,13 +71,19 @@ class AppointmentController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($patient_id = "")
     {
         $model = new Appointment();
 
-//        $patientList = AppHelper::getPatientList();
-//        $consultationType = AppHelper::getConsultationType();
-//        $ailmentList = AppHelper::getAilmentList();
+        if (!empty($patient_id)) {
+            $patientModel = Patient::find()->where([
+                'patient_id' => $patient_id
+            ])->one();
+
+            $model->patient_id = $patientModel->patient_id;
+            $model->patient_name = $patientModel->name;
+            $model->age = $patientModel->age;
+        }
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
