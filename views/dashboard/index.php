@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\BaseUrl;
-
+/** @var string $patientCountToday */
+/** @var string $patientCountWeek */
 $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 ?>
@@ -13,12 +14,12 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' =
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3><?= $patientCountToday ?></h3>
 
-                        <p>New Orders</p>
+                        <p>Patients Today</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="ion ion-stats-bars"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -28,9 +29,9 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' =
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3><?= $patientCountWeek ?></h3>
 
-                        <p>Bounce Rate</p>
+                        <p>Patient This Week</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -45,7 +46,7 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' =
                     <div class="inner">
                         <h3>44</h3>
 
-                        <p>User Registrations</p>
+                        <p>Patient This Week</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
@@ -60,7 +61,7 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' =
                     <div class="inner">
                         <h3>65</h3>
 
-                        <p>Unique Visitors</p>
+                        <p>New Patients</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
