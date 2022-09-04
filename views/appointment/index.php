@@ -20,7 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="appointment-index">
 
     <p>
-        <?= Html::a('Create Appointment', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-plus-square" aria-hidden="true"></i> Create Appointment', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-medkit" aria-hidden="true"></i> Create Patient & Appointment', ['patient/create','create_appointment' => 1], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

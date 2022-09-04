@@ -14,7 +14,10 @@ class AppHelper {
 
     public static function getPatientList () {
         $patientModel = Patient::find()->all();
-        return ArrayHelper::map($patientModel, 'patient_id', 'name');
+        return ArrayHelper::map($patientModel, 'patient_id', function ($patientModel) {
+            $patientPhone = (!empty($patientModel->phone)) ? $patientModel->phone : "";
+            return (!empty($patientPhone)) ? $patientModel->name.' ('.$patientPhone. ')' : $patientModel->name;
+        });
     }
 
     public static function getConsultationType () {
