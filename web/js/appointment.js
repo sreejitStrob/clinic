@@ -1,11 +1,11 @@
 
 var appointment = {
-    patientSelect : function (e) {
+    patientSelect : function (patientId) {
         $.ajax({
             type: "GET",
-            url: baseUrl + 'area/get-states',
+            url: baseUrl + 'appointment/patient-details',
             data: {
-                'country_id': 1,
+                'id': patientId
             },
             success: function (response)
             {

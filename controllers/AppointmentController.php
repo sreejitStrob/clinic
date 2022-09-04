@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\helpers\AppHelper;
 use app\models\Appointment;
 use app\models\AppointmentSearch;
+use app\models\Patient;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -122,6 +123,28 @@ class AppointmentController extends Controller
         $this->findModel($appointment_id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionPatientDetails ($id) {
+
+        $patientModel = Patient::find()
+            ->where([
+                'patient_id' => $id
+            ])
+            ->asArray()
+            ->one();
+        if (!empty($patientModel)) {
+            $response = [
+                'status' => 200,
+                'data' => $patientModel
+            ];
+        } else{
+            $response = [
+                'status' => 405,
+                'data' => $patientModel
+            ];
+        }
+        return json_encode($response,true);
     }
 
     /**
