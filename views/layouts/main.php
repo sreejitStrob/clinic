@@ -122,65 +122,131 @@ AppAsset::register($this);
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item">
-                        <a href="<?= Url::to(['dashboard/index'])?>" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard
-                                <span class="right badge badge-danger">New</span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Patient
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= Url::to(['patient/create'])?>" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Patient</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= Url::to(['patient/index'])?>" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Manage Patient</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Medical Representative
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= Url::to(['medical-representative/create'])?>" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create MR</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= Url::to(['medical-representative/index'])?>" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Manage MR</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                  <?php
+                  $controller = $this->context->action->controller->id;
+                  $method = $this->context->action->id;
+                  $current_action = $controller . '/' . $method;
+            echo \hail812\adminlte\widgets\Menu::widget([
+                'options' => [
+                    "class" => 'nav-child-indent'
+                ],
+                'items' => [
+                    [
+                        'label' => 'Dashboard',
+                        'icon' => 'tachometer-alt',
+                        'url' => ['dashboard/index'],
+                        'iconStyle' => 'fas',
+                        'options' =>
+                            [
+                                "class" => 'nav-item'
+                            ]
+                    ],
+                    ['label' => 'APPOINTMENTS', 'header' => true],
+                    [
+                        'label' => 'Appointments',
+                        'icon' => 'person-booth',
+                        'url' => ['appointment/index'],
+                        // 'active' => ($current_action == 'tenant/index') ? true : "",
+                        'active' => ($controller == 'tenant') ? true : "",
+                        //  'visible' => Helper::checkRoute('tenant/index'),
+                        'iconStyle' => 'fas',
+                        'options' => [
+                            "class" => 'nav-item'
+                        ]
+                    ],
+                    [
+                        'label' => 'Reports',
+                        'icon' => 'file-invoice',
+                        'iconStyle' => 'fas',
+                        'items' => [
+                            [
+                                'label' => 'Financial Reports',
+                                'icon' => 'chart-bar',
+                                'iconStyle' => 'fas',
+                                'items' => [
+                                    [
+                                        'label' => 'Balance sheet',
+                                        'icon' => 'chart-bar',
+                                        'url' => ['financial-report/balance-sheet'],
+                                        'iconStyle' => 'fas',
+                                    ],
+
+                                ],
+                            ],
+
+
+                        ]
+                    ],
+
+                ],
+                "options" => [
+                    'class' => " nav-collapse-hide-child nav nav-pills nav-sidebar flex-column nav-child-indent",
+                    'data-widget' => 'treeview',
+                    'role' => 'menu',
+                    'data-accordion' => 'true'
+                ]
+                ]);
+            ?>
+
+<!--                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">-->
+<!--                    <!-- Add icons to the links using the .nav-icon class-->
+<!--                         with font-awesome or any other icon font library -->-->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="--><?//= Url::to(['dashboard/index'])?><!--" class="nav-link">-->
+<!--                            <i class="nav-icon fas fa-tachometer-alt"></i>-->
+<!--                            <p>-->
+<!--                                Dashboard-->
+<!--                                <span class="right badge badge-danger">New</span>-->
+<!--                            </p>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item menu-open">-->
+<!--                        <a href="#" class="nav-link">-->
+<!--                            <i class="nav-icon fas fa-tachometer-alt"></i>-->
+<!--                            <p>-->
+<!--                                Patient-->
+<!--                                <i class="right fas fa-angle-left"></i>-->
+<!--                            </p>-->
+<!--                        </a>-->
+<!--                        <ul class="nav nav-treeview">-->
+<!--                            <li class="nav-item">-->
+<!--                                <a href="--><?//= Url::to(['patient/create'])?><!--" class="nav-link">-->
+<!--                                    <i class="far fa-circle nav-icon"></i>-->
+<!--                                    <p>Create Patient</p>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <a href="--><?//= Url::to(['patient/index'])?><!--" class="nav-link">-->
+<!--                                    <i class="far fa-circle nav-icon"></i>-->
+<!--                                    <p>Manage Patient</p>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item menu-open">-->
+<!--                        <a href="#" class="nav-link">-->
+<!--                            <i class="nav-icon fas fa-tachometer-alt"></i>-->
+<!--                            <p>-->
+<!--                                Medical Representative-->
+<!--                                <i class="right fas fa-angle-left"></i>-->
+<!--                            </p>-->
+<!--                        </a>-->
+<!--                        <ul class="nav nav-treeview">-->
+<!--                            <li class="nav-item">-->
+<!--                                <a href="--><?//= Url::to(['medical-representative/create'])?><!--" class="nav-link">-->
+<!--                                    <i class="far fa-circle nav-icon"></i>-->
+<!--                                    <p>Create MR</p>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <a href="--><?//= Url::to(['medical-representative/index'])?><!--" class="nav-link">-->
+<!--                                    <i class="far fa-circle nav-icon"></i>-->
+<!--                                    <p>Manage MR</p>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                </ul>-->
             </nav>
             <!-- /.sidebar-menu -->
         </div>
