@@ -1,27 +1,27 @@
 /* global Chart:false */
 
 $(function () {
-    'use strict'
+
 
     var ticksStyle = {
         fontColor: '#495057',
         fontStyle: 'bold'
-    }
+    };
 
-    var mode = 'index'
-    var intersect = true
+    var mode = 'index';
+    var intersect = true;
 
-    var $salesChart = $('#sales-chart')
+    var $salesChart = $('#sales-chart');
     // eslint-disable-next-line no-unused-vars
     var salesChart = new Chart($salesChart, {
         type: 'bar',
         data: {
-            labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            labels: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
             datasets: [
                 {
                     backgroundColor: '#007bff',
                     borderColor: '#007bff',
-                    data: [1000, 2000, 3000, 2500, 2700, 2500, 3000]
+                    data: [1000, 2057, 3000, 2500, 2700, 2500, 3000]
                 },
                 {
                     backgroundColor: '#ced4da',
@@ -58,11 +58,11 @@ $(function () {
                         // Include a dollar sign in the ticks
                         callback: function (value) {
                             if (value >= 1000) {
-                                value /= 1000
-                                value += 'k'
+                                value /= 1000;
+                                value += 'k';
                             }
 
-                            return '$' + value
+                            return '' + value;
                         }
                     }, ticksStyle)
                 }],
@@ -75,16 +75,16 @@ $(function () {
                 }]
             }
         }
-    })
+    });
 
-    var $visitorsChart = $('#visitors-chart')
+    var $visitorsChart = $('#visitors-chart');
     // eslint-disable-next-line no-unused-vars
     var visitorsChart = new Chart($visitorsChart, {
         data: {
-            labels: ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
+            labels: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
             datasets: [{
                 type: 'line',
-                data: [100, 120, 170, 167, 180, 177, 160],
+                data: [100, 120, 170, 167, 180, 0, 300],
                 backgroundColor: 'transparent',
                 borderColor: '#007bff',
                 pointBorderColor: '#007bff',
@@ -95,7 +95,7 @@ $(function () {
             },
                 {
                     type: 'line',
-                    data: [60, 80, 70, 67, 80, 77, 100],
+                    data: [60, 80, 70, 67, 80, 77, 290],
                     backgroundColor: 'tansparent',
                     borderColor: '#ced4da',
                     pointBorderColor: '#ced4da',
@@ -141,7 +141,7 @@ $(function () {
                 }]
             }
         }
-    })
-})
+    });
+});
 
 // lgtm [js/unused-local-variable]

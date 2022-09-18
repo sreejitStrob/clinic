@@ -3,7 +3,10 @@
 use yii\helpers\BaseUrl;
 /** @var string $patientCountToday */
 /** @var string $patientCountWeek */
-$this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' => [\yii\web\JqueryAsset::className()]]);
+/** @var string $patientCountMonth */
+/** @var string $patientLevelSinceLastWeek */
+/** @var string $increasePercent */
+$this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=171', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 ?>
 <section class="content">
@@ -44,9 +47,9 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' =
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3><?= $patientCountMonth ?></h3>
 
-                        <p>Patient This Week</p>
+                        <p>Patient This Month</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
@@ -59,7 +62,7 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' =
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>0</h3>
 
                         <p>New Patients</p>
                     </div>
@@ -83,12 +86,22 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=17', ['depends' =
                     <div class="card-body">
                         <div class="d-flex">
                             <p class="d-flex flex-column">
-                                <span class="text-bold text-lg">820</span>
+                                <span class="text-bold text-lg"><?= $patientCountWeek ?></span>
                                 <span>Visitors Over Time</span>
                             </p>
                             <p class="ml-auto d-flex flex-column text-right">
                     <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
+                        <?php
+                        if ($patientLevelSinceLastWeek == 1):
+                            ?>
+                            <i class="fas fa-arrow-up"></i> <?= $increasePercent ?>
+                        <?php
+                        else:
+                        ?>
+                           <i class="fas fa-arrow-down"></i> <?= $increasePercent ?>
+                        <?php
+                        endif;
+                        ?>
                     </span>
                                 <span class="text-muted">Since last week</span>
                             </p>
