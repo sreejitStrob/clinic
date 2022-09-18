@@ -25,9 +25,9 @@ class DashboardController extends Controller
 //        $weekStart = date("Y-m-d", strtotime($weekStart . "-1 days"));
 //        $weekEnd = date("Y-m-d", strtotime($weekEnd . "-1 days"));
 
-        debugPrint($weekStart);
-        debugPrint($weekEnd);
-        exit;
+//        debugPrint($weekStart);
+//        debugPrint($weekEnd);
+//        exit;
 
 
         $patientCountToday = Appointment::find()->where([
