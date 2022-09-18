@@ -189,6 +189,26 @@ AppAsset::register($this);
                         ]
                     ],
                     [
+                        'label' => 'Inventory',
+                        'icon' => 'person-booth',
+                        'iconStyle' => 'fas',
+                        'active' => ($controller == 'inventory') ? true : "",
+                        'items' => [
+                            [
+                                'label' => 'Create Item',
+                                'icon' => 'chart-bar',
+                                'url' => ['inventory/create'],
+                                'iconStyle' => 'fas',
+                            ],
+                            [
+                                'label' => 'Manage Inventory',
+                                'icon' => 'chart-bar',
+                                'url' => ['inventory/create'],
+                                'iconStyle' => 'fas',
+                            ],
+                        ]
+                    ],
+                    [
                         'label' => 'Medical Representative',
                         'icon' => 'person-booth',
                         'iconStyle' => 'fas',
@@ -207,6 +227,48 @@ AppAsset::register($this);
                                 'url' => ['patient/index'],
                                 'active' => ($controller == 'medical-representative' && $method == 'index') ? true : "",
                                 'iconStyle' => 'fas',
+                            ],
+                        ]
+                    ],
+                    [
+                        'label' => 'Reports',
+                        'icon' => 'person-booth',
+                        'iconStyle' => 'fas',
+                        'active' => ($controller == 'inventory') ? true : "",
+                        'items' => [
+                            [
+                                'label' => 'Create Item',
+                                'icon' => 'chart-bar',
+                                'url' => ['inventory/create'],
+                                'iconStyle' => 'fas',
+                            ],
+                            [
+                                'label' => 'Manage Inventory',
+                                'icon' => 'chart-bar',
+                                'url' => ['inventory/create'],
+                                'iconStyle' => 'fas',
+                            ],
+                        ]
+                    ],
+                    [
+                        'label' => 'Settings',
+                        'icon' => 'person-booth',
+                        'iconStyle' => 'fas',
+                        'active' => ($controller == 'consultation-type' || $controller == 'ailment') ? true : "",
+                        'items' => [
+                            [
+                                'label' => 'Manage Consultation',
+                                'icon' => 'chart-bar',
+                                'url' => ['consultation-type/index'],
+                                'iconStyle' => 'fas',
+                                'active' => ($controller == 'consultation-type' ) ? true : "",
+                            ],
+                            [
+                                'label' => 'Manage Ailment',
+                                'icon' => 'chart-bar',
+                                'url' => ['ailment/index'],
+                                'iconStyle' => 'fas',
+                                'active' => ($controller == 'ailment') ? true : "",
                             ],
                         ]
                     ],
