@@ -141,7 +141,7 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=15', ['depends' =
                     <div class="card-body">
                         <div class="d-flex">
                             <p class="d-flex flex-column">
-                                <span class="text-bold text-lg"><?= number_format($salesAmountWeek,2) ?></span>
+                                <span class="text-bold text-lg"><?= number_format($salesAmountWeek,2) ." rs" ?></span>
                                 <span>Sales Over Time</span>
                             </p>
                             <p class="ml-auto d-flex flex-column text-right">

@@ -30,7 +30,7 @@ AppAsset::register($this);
     <!--    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">-->
 
     <!--    <link rel="stylesheet" href="dist/css/adminlte.min.css">-->
-
+    <link rel="shortcut icon" href=<?= Yii::$app->urlManager->createAbsoluteUrl('images/logo.png'); ?>>
     <?php // $this->registerCsrfMetaTags() ?>
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
