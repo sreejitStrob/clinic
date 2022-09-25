@@ -95,10 +95,10 @@ class DashviewController extends Controller
         $increasePercent = 0;
         if ($patientCountYesterday >= $patientCountLastWeekThisDay) {
             $patientLevelSinceLastWeek = 1;
-            $increasePercent = ($patientCountLastWeekThisDay / $patientCountYesterday) * 100;
+//            $increasePercent = ($patientCountLastWeekThisDay / $patientCountYesterday) * 100;
         } else{
             $patientLevelSinceLastWeek = 0;
-            $increasePercent = ($patientCountYesterday / $patientCountLastWeekThisDay) * 100;
+//            $increasePercent = ($patientCountYesterday / $patientCountLastWeekThisDay) * 100; //TODO
         }
 
         return $this->render('index', [
