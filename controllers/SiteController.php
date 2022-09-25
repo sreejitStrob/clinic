@@ -86,7 +86,7 @@ class SiteController extends Controller
     {
         $this->layout = false;
         if (!Yii::$app->user->isGuest) {
-            return  Yii::$app->getResponse()->redirect(['patient/index']);
+            return  Yii::$app->getResponse()->redirect(['dashview/index']);
         }
 //        else{
 //            debugPrint(Yii::$app->user);
