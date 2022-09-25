@@ -124,7 +124,7 @@ AppAsset::register($this);
                     [
                         'label' => 'Dashboard',
                         'icon' => 'tachometer-alt',
-                        'url' => ['dashboard/index'],
+                        'url' => ['dashview/index'],
                         'iconStyle' => 'fas',
                         'options' =>
                             [

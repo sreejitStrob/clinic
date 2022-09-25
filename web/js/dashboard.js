@@ -17,7 +17,7 @@ $(function () {
 
    var data = $.ajax({
         type: "POST",
-        url: baseUrl + 'dashboard/get-patient-flow',
+        url: baseUrl + 'dashview/get-patient-flow',
         data: {
             id:1,
             _csrf : csrfToken

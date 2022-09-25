@@ -7,7 +7,7 @@ use yii\helpers\BaseUrl;
 /** @var string $patientLevelSinceLastWeek */
 /** @var string $increasePercent */
 /** @var string $salesAmountWeek */
-$this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=15', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=151', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 ?>
 <section class="content">
