@@ -22,7 +22,7 @@ class DashboardController extends Controller
                 ],
                 'access' => [
                     'class' => AccessControl::className(),
-                    'only' => ['index','create','update','view'],
+                    'only' => ['index'],
                     'rules' => [
                         [
                             'actions' => [],
@@ -34,7 +34,6 @@ class DashboardController extends Controller
             ]
         );
     }
-
 
     public function actionIndex () {
 
