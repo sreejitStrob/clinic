@@ -105,7 +105,7 @@ class SiteController extends Controller
 //    exit;
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            return $this->goBack();
+            return $this->redirect(['dashboard/index']);
         }
 
         $model->password = '';
