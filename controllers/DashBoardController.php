@@ -3,10 +3,38 @@ namespace app\controllers;
 
 use app\models\Appointment;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class DashboardController extends Controller
 {
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            [
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::className(),
+                    'only' => ['index','create','update','view'],
+                    'rules' => [
+                        [
+                            'actions' => [],
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
+                    ],
+                ],
+            ]
+        );
+    }
+
 
     public function actionIndex () {
 
