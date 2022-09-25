@@ -20,12 +20,9 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php $this->registerCsrfMetaTags() ?>
+
     <title><?= Html::encode($this->title) ?></title>
-    <script type="application/javascript">
-        var baseUrl = '<?php echo BaseUrl::home(); ?>';
-        var _csrf = '<?php echo Yii::$app->request->getCsrfToken() ?>';
-    </script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <!--    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">-->
@@ -33,7 +30,14 @@ AppAsset::register($this);
     <!--    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">-->
 
     <!--    <link rel="stylesheet" href="dist/css/adminlte.min.css">-->
+
+    <?php // $this->registerCsrfMetaTags() ?>
+    <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
+    <script type="application/javascript">
+        var baseUrl = '<?php echo BaseUrl::home(); ?>';
+        var _csrf = '<?php echo Yii::$app->request->getCsrfToken() ?>';
+    </script>
 </head>
 <body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <?php $this->beginBody() ?>

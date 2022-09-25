@@ -6,7 +6,8 @@ use yii\helpers\BaseUrl;
 /** @var string $patientCountMonth */
 /** @var string $patientLevelSinceLastWeek */
 /** @var string $increasePercent */
-$this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=171', ['depends' => [\yii\web\JqueryAsset::className()]]);
+/** @var string $salesAmountWeek */
+$this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=15', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 ?>
 <section class="content">
@@ -140,14 +141,14 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=171', ['depends' 
                     <div class="card-body">
                         <div class="d-flex">
                             <p class="d-flex flex-column">
-                                <span class="text-bold text-lg">$18,230.00</span>
+                                <span class="text-bold text-lg"><?= number_format($salesAmountWeek,2) ?></span>
                                 <span>Sales Over Time</span>
                             </p>
                             <p class="ml-auto d-flex flex-column text-right">
                     <span class="text-success">
                       <i class="fas fa-arrow-up"></i> 33.1%
                     </span>
-                                <span class="text-muted">Since last month</span>
+                                <span class="text-muted">Since last Week</span>
                             </p>
                         </div>
                         <!-- /.d-flex -->
@@ -158,11 +159,11 @@ $this->registerJsFile(BaseUrl::home() . 'js/dashboard.js?micro=171', ['depends' 
 
                         <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This year
+                    <i class="fas fa-square text-primary"></i> This Week
                   </span>
 
                             <span>
-                    <i class="fas fa-square text-gray"></i> Last year
+                    <i class="fas fa-square text-gray"></i> Last Week
                   </span>
                         </div>
                     </div>
