@@ -74,7 +74,7 @@ class DashboardController extends Controller
             'patientCountWeek' => $patientCountWeek,
             'patientCountMonth' => $patientCountMonth,
             'patientLevelSinceLastWeek' => $patientLevelSinceLastWeek,
-            'increasePercent' => $increasePercent,
+            'increasePercent' => number_format($increasePercent,2),
         ]);
     }
 }
