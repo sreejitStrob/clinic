@@ -7,6 +7,7 @@ use app\models\Appointment;
 use app\models\AppointmentSearch;
 use app\models\ConsultationType;
 use app\models\Patient;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -30,9 +31,21 @@ class AppointmentController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+                'access' => [
+                    'class' => AccessControl::className(),
+                    'only' => ['index','create','update','view'],
+                    'rules' => [
+                        [
+                            'actions' => [],
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
+                    ],
+                ],
             ]
         );
     }
+
 
     /**
      * Lists all Appointment models.

@@ -45,6 +45,7 @@ class AdminController extends Controller
         );
     }
 
+
     /**
      * Lists all Admin models.
      *
