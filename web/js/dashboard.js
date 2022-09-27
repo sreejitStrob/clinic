@@ -11,8 +11,6 @@ $(function () {
     var mode = 'index';
     var intersect = true;
 
-
-
     //Patient flow ajax
 
    var data = $.ajax({
