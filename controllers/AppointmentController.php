@@ -138,9 +138,9 @@ class AppointmentController extends Controller
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($appointment_id)
+    public function actionDelete($id)
     {
-        $this->findModel($appointment_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
