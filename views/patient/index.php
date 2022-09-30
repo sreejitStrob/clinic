@@ -46,11 +46,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             'email:email',
             'notes:ntext',
-            'gender',
+
             [
                 'label' => 'Gender',
                 'value' => function ($model) {
-                    return AppHelper::$gender[$model->gender];
+                    return (!empty($model->gender)) ? AppHelper::$gender[$model->gender] : "";
                 },
                 'filter' => Html::activeDropDownList($searchModel, 'gender', AppHelper::$gender, ['class' => 'form-control', 'prompt' => 'Filer By Status']),
             ],
