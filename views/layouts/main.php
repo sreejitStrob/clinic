@@ -311,9 +311,10 @@ AppAsset::register($this);
                                     </button>
                                 </div>
                             </div>
+
                             <!-- /.card-header -->
                             <div class="card-body">
-
+                                <?= Alert::widget() ?>
                                 <?= $content ?>
 
                                 <!-- /.row -->

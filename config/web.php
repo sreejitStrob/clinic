@@ -8,7 +8,8 @@ $functions = require __DIR__ . '/functions.php';
 $baseUrl = str_replace('/web', '', (new Request())->getBaseUrl());
 
 $config = [
-    'id' => 'basic',
+    'id' => 'clinic',
+    'timeZone' => 'Asia/Kolkata',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'defaultRoute' => 'dashview/index',

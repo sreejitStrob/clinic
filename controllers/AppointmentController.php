@@ -7,6 +7,7 @@ use app\models\Appointment;
 use app\models\AppointmentSearch;
 use app\models\ConsultationType;
 use app\models\Patient;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -141,7 +142,7 @@ class AppointmentController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('success', "Your message to display.");
         return $this->redirect(['index']);
     }
 
