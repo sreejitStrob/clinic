@@ -1,6 +1,7 @@
 <?php
 
 use app\helpers\AppHelper;
+use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -26,23 +27,26 @@ use yii\widgets\ActiveForm;
             ]);
             ?>
         </div>
-    </div>
-    <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'batch_no')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-6">
-            <?= $form->field($model, 'date_of_order')->textInput() ?>
-        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'rate')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'rate')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'date_of_order')->widget(DatePicker::classname(), [
+                'options' => ['placeholder' => 'Enter date of order ...'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd-mm-yyyy'
+                ]
+            ]);
+            ?>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-6">
             <?= $form->field($model, 'pack')->textInput() ?>
@@ -53,13 +57,32 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'mfg_date')->textInput() ?>
+            <?= $form->field($model, 'mfg_date')->widget(DatePicker::classname(), [
+                'options' => ['placeholder' => 'Enter Mfg date ...'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd-mm-yyyy'
+                ]
+            ]);
+            ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'expiry_date')->textInput() ?>
+            <?= $form->field($model, 'expiry_date')->widget(DatePicker::classname(), [
+                'options' => ['placeholder' => 'Enter Expiry date ...'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd-mm-yyyy'
+                ]
+            ]);
+            ?>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
 
+        </div>
+
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
