@@ -62,4 +62,9 @@ class Inventory extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+
+    public function getProduct() {
+        return $this->hasOne(Product::className(), ['product_id' => 'product_id']);
+    }
+
 }

@@ -182,18 +182,18 @@ AppAsset::register($this);
                         'label' => 'Inventory',
                         'icon' => 'person-booth',
                         'iconStyle' => 'fas',
-                        'active' => ($controller == 'inventory') ? true : "",
+                        'active' => ($controller == 'inventory' || $controller == 'product') ? true : "",
                         'items' => [
                             [
-                                'label' => 'Create Item',
+                                'label' => 'Manage Item',
                                 'icon' => 'chart-bar',
-                                'url' => ['inventory/create'],
+                                'url' => ['product/index'],
                                 'iconStyle' => 'fas',
                             ],
                             [
                                 'label' => 'Manage Inventory',
                                 'icon' => 'chart-bar',
-                                'url' => ['inventory/create'],
+                                'url' => ['inventory/index'],
                                 'iconStyle' => 'fas',
                             ],
                         ]
@@ -224,7 +224,7 @@ AppAsset::register($this);
                         'label' => 'Reports',
                         'icon' => 'person-booth',
                         'iconStyle' => 'fas',
-                        'active' => ($controller == 'inventory') ? true : "",
+                        'active' => ($controller == 'report') ? true : "",
                         'items' => [
                             [
                                 'label' => 'Create Item',

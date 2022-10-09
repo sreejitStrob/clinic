@@ -1,5 +1,7 @@
 <?php
 
+use app\helpers\AppHelper;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -25,7 +27,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'product_id',
+            [
+                'label' => 'Product',
+                'contentOptions' => [ 'style' => 'width: 20%;' ],
+                'value' => function ($model) {
+
+                    return isset($model->product->name) ? $model->product->name : "";
+                },
+                'filter' => Select2::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'product_id',
+                    'data' => AppHelper::getProducts(),
+                    'options' => ['placeholder' => 'Select A product ...'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ])
+            ],
             'batch_no',
             'date_of_order',
             'rate',
