@@ -70,8 +70,15 @@ class InventoryController extends Controller
         $model = new Inventory();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'inventory_id' => $model->inventory_id]);
+            if ($model->load($this->request->post())) {
+                date_default_timezone_set('Asia/Kolkata');
+                $model->created_at = date('Y-m-d H:i:s');
+                $model->updated_at = date('Y-m-d H:i:s');
+                $model->expiry_date = (!empty($model->expiry_date)) ? date("Y-m-d", strtotime($model->expiry_date)) : "";
+                $model->mfg_date = (!empty($model->mfg_date)) ? date("Y-m-d", strtotime($model->mfg_date)) : "";
+                $model->date_of_order = (!empty($model->date_of_order)) ? date("Y-m-d", strtotime($model->date_of_order)) : "";
+                $model->save();
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -93,8 +100,14 @@ class InventoryController extends Controller
     {
         $model = $this->findModel($inventory_id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'inventory_id' => $model->inventory_id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            date_default_timezone_set('Asia/Kolkata');
+            $model->updated_at = date('Y-m-d H:i:s');
+            $model->expiry_date = (!empty($model->expiry_date)) ? date("Y-m-d", strtotime($model->expiry_date)) : "";
+            $model->mfg_date = (!empty($model->mfg_date)) ? date("Y-m-d", strtotime($model->mfg_date)) : "";
+            $model->date_of_order = (!empty($model->date_of_order)) ? date("Y-m-d", strtotime($model->date_of_order)) : "";
+            $model->save();
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

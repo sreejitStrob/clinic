@@ -98,6 +98,7 @@ class ProductController extends Controller
         $model = $this->findModel($product_id);
 
         if ($this->request->isPost && $model->load($this->request->post())) {
+            date_default_timezone_set('Asia/Kolkata');
             $model->updated_at = date('Y-m-d H:i:s');
             $model->save();
             return $this->redirect(['index']);
