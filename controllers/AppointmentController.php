@@ -100,7 +100,10 @@ class AppointmentController extends Controller
         }
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                date_default_timezone_set('Asia/Kolkata');
+                $model->created_at = date('Y-m-d H:i:s');
+                $model->save();
                 return $this->redirect(['index']);
             }
         } else {
