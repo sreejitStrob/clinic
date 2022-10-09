@@ -5,6 +5,7 @@ use app\models\Ailment;
 use app\models\ConsultantType;
 use app\models\ConsultationType;
 use app\models\Patient;
+use app\models\Product;
 use yii\helpers\ArrayHelper;
 
 class AppHelper {
@@ -32,6 +33,11 @@ class AppHelper {
             'is_deleted' => 0
         ])->all();
         return ArrayHelper::map($ailmentModel, 'ailment_id', 'name');
+    }
+
+    public static function getProducts() {
+        $productModel = Product::find()->all();
+        return ArrayHelper::map($productModel, 'product_id', 'name');
     }
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+use app\helpers\AppHelper;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -13,7 +15,16 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'product_id')->textInput() ?>
+
+            <?=
+            $form->field($model, 'product_id')->widget(Select2::classname(), [
+                'data' => AppHelper::getProducts(),
+                'options' => ['placeholder' => 'Select a Product ...'],
+                'pluginOptions' => [
+                    'allowClear' => true,
+                ],
+            ]);
+            ?>
         </div>
     </div>
     <div class="row">

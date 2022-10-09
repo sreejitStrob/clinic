@@ -42,7 +42,7 @@ class Product extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'product_id' => 'Product ID',
+            'product_id' => 'Product',
             'name' => 'Name',
             'description' => 'Description',
             'created_at' => 'Created At',

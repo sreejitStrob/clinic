@@ -50,7 +50,7 @@ class Inventory extends \yii\db\ActiveRecord
     {
         return [
             'inventory_id' => 'Inventory ID',
-            'product_id' => 'Product ID',
+            'product_id' => 'Product',
             'batch_no' => 'Batch No',
             'date_of_order' => 'Date Of Order',
             'rate' => 'Rate',
