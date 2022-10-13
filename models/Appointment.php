@@ -37,6 +37,7 @@ class Appointment extends \yii\db\ActiveRecord
             [['patient_id', 'ailment_id','consultant_type_id'], 'integer'],
             [['age', 'amount'], 'number'],
             [['notes'], 'string'],
+            [['payment_mode'], 'safe'],
 //            [['created_at', 'updated_at'], 'required'],
             [['created_at', 'updated_at','is_followup'], 'safe'],
             [['patient_name'], 'string', 'max' => 255],
@@ -58,6 +59,7 @@ class Appointment extends \yii\db\ActiveRecord
             'amount' => 'Amount',
             'notes' => 'Notes',
             'is_followup' => 'Is Followup ?',
+            'payment_mode' => 'Payment Mode',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

@@ -1,0 +1,1 @@
+ALTER TABLE `appointment` ADD `payment_mode` ENUM('O','C','') NULL DEFAULT NULL AFTER `is_followup`;

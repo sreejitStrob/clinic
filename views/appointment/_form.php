@@ -66,6 +66,24 @@ $this->registerJsFile(BaseUrl::home() . 'js/appointment.js?micro=17', ['depends'
             <?= $form->field($model, 'age')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-3">
+            <?=
+            $form->field($model, 'payment_mode')->widget(Select2::classname(), [
+                'data' => [
+                    "O" => "Online",
+                    "C" => "Cash",
+                ],
+                'options' => ['placeholder' => 'Select a Payment Type ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-3">
             <?= $form->field($model, 'amount')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
