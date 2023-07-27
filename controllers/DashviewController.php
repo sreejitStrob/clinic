@@ -130,14 +130,13 @@ class DashviewController extends Controller
                 'BETWEEN', 'DATE(appointment.created_at)', $weekStart, $weekEnd
             ])
             ->groupBy([
-//                'DATE(appointment.created_at)',
-//                'DAYNAME(appointment.created_at)'
-                'date',
-                'day'
+                'DATE(appointment.created_at)',
+                'DAYNAME(appointment.created_at)'
+
 
             ])
             ->orderBy([
-                'DATE(appointment.created_at)' => SORT_ASC
+                'date' => SORT_ASC
             ])
             ->asArray()
             ->all();
