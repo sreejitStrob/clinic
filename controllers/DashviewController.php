@@ -122,19 +122,16 @@ class DashviewController extends Controller
         $appointmentCurrentWeek = Appointment::find()
             ->select([
                 'COUNT(appointment.appointment_id) as patient_count',
-//                'DATE(appointment.created_at) as date',
-//                'DAYNAME(appointment.created_at) as day',
+                'DATE(appointment.created_at) as date',
+                'DAYNAME(appointment.created_at) as day',
                 'SUM(appointment.amount) as amount',
             ])
             ->where([
                 'BETWEEN', 'DATE(appointment.created_at)', $weekStart, $weekEnd
             ])
             ->groupBy([
-//                'DATE(appointment.created_at)',
-//                'DAYNAME(appointment.created_at)'
-                'date',
-                'day'
-
+                'DATE(appointment.created_at)',
+                'DAYNAME(appointment.created_at)'
             ])
             ->orderBy([
                 'date' => SORT_ASC
