@@ -132,9 +132,10 @@ class DashviewController extends Controller
             ->groupBy([
                 'DATE(appointment.created_at)',
                 'DAYNAME(appointment.created_at)'
+
             ])
             ->orderBy([
-                'appointment.created_at' => SORT_ASC
+                'DATE(appointment.created_at)' => SORT_ASC
             ])
             ->asArray()
             ->all();
