@@ -155,7 +155,7 @@ class DashviewController extends Controller
                 
             ])
             ->orderBy([
-                'appointment.created_at' => SORT_ASC
+                'date' => SORT_ASC
             ])
             ->asArray()
             ->all();
