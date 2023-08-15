@@ -150,16 +150,18 @@ class DashviewController extends Controller
                 'BETWEEN', 'DATE(appointment.created_at)', $weekStartLastWeek, $weekEndLastWeek
             ])
             ->groupBy([
-                'DATE(appointment.created_at)'
+                'DATE(appointment.created_at)',
+                'DAYNAME(appointment.created_at)'
+                
             ])
             ->orderBy([
                 'appointment.created_at' => SORT_ASC
             ])
             ->asArray()
             ->all();
-       debugPrint($appointmentCurrentWeek);
-       debugPrint($appointmentLastWeek);
-       exit;
+    //    debugPrint($appointmentCurrentWeek);
+    //    debugPrint($appointmentLastWeek);
+    //    exit;
        
         $initVal = ["0","0","0","0","0","0","0"];
         $currentWeekPatientCount = $initVal;
