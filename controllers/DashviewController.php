@@ -157,8 +157,10 @@ class DashviewController extends Controller
             ])
             ->asArray()
             ->all();
-//        debugPrint($appointmentCurrentWeek);
-//        debugPrint($appointmentLastWeek);
+       debugPrint($appointmentCurrentWeek);
+       debugPrint($appointmentLastWeek);
+       exit;
+       
         $initVal = ["0","0","0","0","0","0","0"];
         $currentWeekPatientCount = $initVal;
         $currentWeekAmount = $initVal;
