@@ -112,9 +112,9 @@ class PatientController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($patient_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($patient_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect('index');
@@ -132,9 +132,9 @@ class PatientController extends Controller
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($patient_id)
+    public function actionDelete($id)
     {
-        $this->findModel($patient_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
