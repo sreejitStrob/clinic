@@ -34,7 +34,7 @@ class Patient extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['notes', 'gender'], 'string'],
-            [['age'], 'integer'],
+            [['age'], 'number'],
             [['created_at', 'updated_at','age'], 'safe'],
             [['name', 'phone', 'email'], 'string', 'max' => 255],
         ];
