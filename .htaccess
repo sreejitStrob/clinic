@@ -1,12 +1,12 @@
 Options -Indexes
 
-<IfModule mod_rewrite.c> 
-  RewriteEngine on
+<IfModule mod_rewrite.c>
+    RewriteEngine On
 
-  RewriteCond %{REQUEST_URI} !^public
-  RewriteRule ^(.*)$ web/$1 [L]
+    # Rewrite URLs to prepend /web if not already there
+    RewriteCond %{REQUEST_URI} !^/web/
+    RewriteRule ^(.*)$ /web/$1 [L]
 </IfModule>
-
 # Deny accessing below extensions
 <Files ~ "(.json|.lock|.git)">
 Order allow,deny
