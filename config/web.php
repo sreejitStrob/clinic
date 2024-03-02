@@ -5,9 +5,9 @@ use yii\web\Request;
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $functions = require __DIR__ . '/functions.php';
-$baseUrl = str_replace('/web', '', (new Request())->getBaseUrl());
-echo $baseUrl;
-exit;
+// $baseUrl = str_replace('/web', '', (new Request())->getBaseUrl());
+// echo $baseUrl;
+// exit;
 $config = [
     'id' => 'clinic',
     'timeZone' => 'Asia/Kolkata',
@@ -22,7 +22,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'xEMp4UQZM9mip4lOOhndG-6ywtDK6JYl',
-            'baseUrl' => $baseUrl,
+            // 'baseUrl' => $baseUrl,
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]
