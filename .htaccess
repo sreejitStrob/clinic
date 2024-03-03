@@ -1,12 +1,15 @@
 Options -Indexes
 
-<IfModule mod_rewrite.c>
-    RewriteEngine On
+<IfModule mod_rewrite.c> 
+  RewriteEngine on
 
-    # Rewrite URLs to prepend /web if not already there
-    RewriteCond %{REQUEST_URI} !^/web/
-    RewriteRule ^(.*)$ /web/$1 [L]
+  #RewriteCond %{HTTPS} off
+  #RewriteRule ^(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+  RewriteCond %{REQUEST_URI} !^public
+  RewriteRule ^(.*)$ web/$1 [L]
 </IfModule>
+
 # Deny accessing below extensions
 <Files ~ "(.json|.lock|.git)">
 Order allow,deny
@@ -14,4 +17,4 @@ Deny from all
 </Files>
 
 # Deny accessing dot files
-RewriteRule (^\.|/\.) - [F]
+# RewriteRule (^\.|/\.) - [F]
